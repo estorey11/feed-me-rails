@@ -1,13 +1,18 @@
 class SearchesController < ApplicationController
 
   def create
-    @search=search.create(search_params)
+    @search=Search.create(search_params)
     render json: @search, status: 201
   end
 
   def show
-    @search=search.find_by(id: params[:id])
+    @search=Search.find_by(id: params[:id])
     render json: @search
+  end
+
+  def index
+    @searches=Search.all
+    render json: @searches
   end
 
 
